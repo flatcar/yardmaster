@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.venv/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+docs/_build/
+
+# User-specific config and release state
+.yardmaster.yaml
+.yardmaster/

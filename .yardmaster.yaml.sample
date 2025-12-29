@@ -1,0 +1,81 @@
+# Yardmaster Configuration File
+# This file configures the behavior of the Flatcar release management tool
+
+# Repository settings
+repositories:
+  scripts: https://github.com/flatcar/scripts.git
+  coreos_overlay: https://github.com/flatcar/coreos-overlay.git
+  portage_stable: https://github.com/flatcar/portage-stable.git
+
+# Local paths
+paths:
+  build_scripts: ./flatcar-build-scripts
+  scripts: ./scripts
+  workspace: ~/.yardmaster/workspace
+
+# Jenkins configuration
+jenkins:
+  url: http://jenkins.infra.kinvolk.io:8080
+  username: ${JENKINS_USER}
+  token: ${JENKINS_TOKEN}
+  jobs:
+    sdk: container/sdk
+    packages_all_arches: container/packages_all_arches
+    release: container/release
+  pipeline_branch: flatcar-master
+
+# Channel configuration
+channels:
+  alpha:
+    release_url: https://alpha.release.flatcar-linux.net
+    description: "Alpha channel - bleeding edge"
+  beta:
+    release_url: https://beta.release.flatcar-linux.net
+    description: "Beta channel - testing"
+  stable:
+    release_url: https://stable.release.flatcar-linux.net
+    description: "Stable channel - production ready"
+  lts:
+    release_url: https://lts.release.flatcar-linux.net
+    description: "LTS channel - long term support"
+
+# GPG signing configuration
+gpg:
+  enabled: true
+  key_id: ${GPG_KEY_ID}
+  keyring_path: os/keyring
+  keyserver: https://keys.openpgp.org
+
+# SDK configuration
+sdk:
+  auto_detect: true
+  fallback_strategy: major_version
+  seed_sdk_offset: 1000  # Previous major - 1000
+
+# Validation rules
+validation:
+  check_version_progression: true
+  require_unique_channels: true
+  warn_on_downgrade: true
+  check_sdk_compatibility: true
+
+# Logging configuration
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: ~/.yardmaster/yardmaster.log
+  console_format: pretty  # pretty, simple, json
+
+# Behavior settings
+behavior:
+  default_dry_run: false
+  auto_confirm: false
+  parallel_builds: false
+  retry_failed_commands: 3
+  command_timeout: 300  # seconds
+
+# Network settings
+network:
+  timeout: 30
+  retries: 3
+  verify_ssl: true
