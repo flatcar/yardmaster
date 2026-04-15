@@ -138,3 +138,13 @@ Yardmaster looks for `.yardmaster.yaml` in the current directory by default. You
   ```bash
   yardmaster -c /path/to/config.yaml status
   ```
+
+---
+
+## Community & Project Documentation
+
+- [Contributing Guidelines](CONTRIBUTING.md) — How to contribute, find issues, and submit pull requests
+- [Code of Conduct](CODE_OF_CONDUCT.md) — Standards for respectful and inclusive community participation
+- [Security Policy](SECURITY.md) — How to report vulnerabilities and security-related information
+- [Maintainers](MAINTAINERS.md) — Current project maintainers and their responsibilities
+- [Governance](GOVERNANCE.md) — Project governance model, decision-making process, and roles
