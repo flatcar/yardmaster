@@ -1,4 +1,8 @@
-__version__ = "0.1.0"
+"""Yardmaster - Flatcar Container Linux Release Management Tool"""
+
+import importlib.metadata
+
+__version__ = importlib.metadata.version(__package__)
 __author__ = "Flatcar Team"
 __license__ = "Apache-2.0"
 
